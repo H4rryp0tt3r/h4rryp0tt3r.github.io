@@ -70,7 +70,7 @@ mysql> select username from users where sno=1 and 1=0 UNION select 1;
 
 Good, have a glance at why we started this :-)
 
-After doing brute-force attack on a webpage for getting flag in a [CTF](https://ctftime.org/ctf-wtf/), we thought it would give us admin rights If we can do the same attack on our notice board too. But later we realized that we can't just get the admin password by a filthy brute-force attack.
+After doing brute-force attack on a webpage for getting flag in a [CTF](https://ctftime.org/ctf-wtf/){:target="_blank"}, we thought it would give us admin rights If we can do the same attack on our notice board too. But later we realized that we can't just get the admin password by a filthy brute-force attack.
 
 Hmm.. So what now, we noticed that in notice board there is a page `notice_view.php?id=1` which takes `id` as GET parameter.
 
@@ -169,6 +169,6 @@ Ah! Finally, the admin password is on page and it is: `admin@onb`
 
 And in this post I keep on mentioning we. So we are
 
-[Nageswara Rao Podilapu (Me)](https://www.facebook.com/nageswararao.podilapu) <br>
-[Anesh Parvatha](https://www.facebook.com/anesh.cse) <br>
-[Ambati Bharath](https://www.facebook.com/bharath.hussy)
+[Nageswara Rao Podilapu (Me)](https://www.facebook.com/H4rryp0tt3r7){:target="_blank"} <br>
+[Anesh Parvatha](https://www.facebook.com/anesh.cse){:target="_blank"} <br>
+[Ambati Bharath](https://www.facebook.com/bharath.hussy){:target="_blank"}
