@@ -9,11 +9,11 @@ author: Nagesh Podilapu a.k.a H4rryp0tt3r
 assetID: 3caacfca488c02e06aecaa04d7a52eb5
 ---
 
-{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/killy.png" description="Challenge Description" %}
+{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/killy.jpg" description="Challenge Description" %}
 
 In this challenge they provided a link to website Royal Bank of Fluxembourg and it's source.
 
-{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/front.png" description="Front page of the challenge webpage" %}
+{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/front.jpg" description="Front page of the challenge webpage" %}
 
 Source code of the given webpage
 
@@ -88,7 +88,7 @@ We couldn't find your username, but it sounds like this user:
 flag{Killy_The_Bit_Is_Wanted_for_9000_$$_FoR_FlipPing_Bits}
 {% endhighlight %}
 
-{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/flag.png" description="Flag being displayed in webpage" %}
+{% include image.html url="/assets/3caacfca488c02e06aecaa04d7a52eb5/flag.jpg" description="Flag being displayed in webpage" %}
 
 Voila!! [r3b00+](https://ctftime.org/team/4882){:target="_blank"} awarded 200 pts
 
