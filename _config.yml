@@ -6,6 +6,8 @@ url: ""
 twitter_username: H4rryp0tt3r7
 github_username:  H4rryp0tt3r
 
+disqus:
+  shortname: nagesh-blog
 markdown: kramdown
 theme: minima
 gems:
