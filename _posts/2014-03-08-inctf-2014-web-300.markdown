@@ -1,0 +1,136 @@
+---
+layout: post
+title: InCTF 2014 - Web 300 writeup
+date: 2014-03-08 17:11:14.000000000 +05:30
+type: post
+published: true
+status: publish
+author: Nagesh Podilapu a.k.a H4rryp0tt3r
+assetID: 8bea969a71aec10eb340c3ddc42b6d2d
+---
+In this challenge they gave a website like below with a simple form with GET Method.
+
+{% include image.html url="/assets/8bea969a71aec10eb340c3ddc42b6d2d/front_screen.png" description="Front page of the given challenge" %}
+
+And the source of the form is given as well
+
+{% highlight html %}
+<center>
+<h1>File Share</h1>
+<span style="color: green;"><strong>View your files</strong></span>
+<form method="GET">
+<table>
+<tbody>
+<tr>
+<td align="right">File Name:</td>
+<td align="left"><input type="text" name="filename" placeholder="*.txt " /></td>
+</tr>
+<tr>
+<td align="right"><img alt="" src="captcha.php" /> :</td>
+<td align="left"><input type="text" name="vercode" /></td>
+</tr>
+<tr>
+<td></td>
+<td align="left"><input type="submit" value="Submit" /></td>
+</tr>
+</tbody>
+</table>
+</form>
+ <!-- Source : view.php~ --></center>
+{% endhighlight %}
+
+and after looking at the given source page, I found a link to php code of the web page
+
+{% highlight php %}
+<?php
+include 'db.php';
+if(isset($_GET['vercode']) && isset($_GET['filename'])){
+    session_start();
+    if ($_GET['vercode'] != $_SESSION["vercode"] OR $_SESSION["vercode"]==''){
+        die("Wrong Captcha..");
+    }
+    $filename = mysql_real_escape_string($_GET['filename']);
+    $id       = md5(mt_rand().rand());
+
+    if(preg_match('/\.\.|(\.php$)/is',$filename))    die('Can\'t read php files..');
+    $query = mysql_query("INSERT INTO foo VALUES('$id','$filename');");
+    if($query)
+        die("View your file: <a href="?id=$id">here</a>\n");
+    else
+        die("Something went wrong..");
+    mysql_free_result($query);
+}
+if(!empty($_GET['id'])){
+    $id      = mysql_real_escape_string($_GET['id']);
+    $query   = mysql_query("SELECT * FROM foo WHERE id='$id'");
+    if(!$query) die("Something went wrong..");
+    while ($row = mysql_fetch_array($query)) {
+        echo $row['FILENAME'];
+        if (file_exists('./files/'.$row['FILENAME'])) {
+            echo file_get_contents('./files/'.$row['FILENAME']);
+        }
+        else {
+            die('No such file');
+        }
+ }
+ mysql_free_result($query);
+}
+mysql_close();
+?>
+{% endhighlight %}
+
+And it's a difficult challenge for me to get contents of flag.php, just before 2 days to the end of contest admin released a hint for this challenge which is an image containing text `truncation`.
+Then I understood that it is something do with SQL Truncation, after reading some blog's I understand that If we try to insert a value into a column greater than it's length it will ignores the rest and inserts upto it's length only.
+
+Example: This is a description of a table named `data` with a column `FILNAME` with length of 30.
+{% highlight text %}
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | varchar(35) | YES  |     | NULL    |       |
+| FILENAME | varchar(30) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+{% endhighlight %}
+
+And If you insert a value of length 32 like below.
+{% highlight text %}
+INESRT INTO DATA VALUES('myID','d4c9fcb601ebe8aa8d4ab59dcdbf692a');
+{% endhighlight %}
+After executing the above query, contents of table are
+
+{% highlight text %}
++------+--------------------------------+
+| id   | FILENAME                       |
++------+--------------------------------+
+| myID | d4c9fcb601ebe8aa8d4ab59dcdbf69 |
++------+--------------------------------+
+{% endhighlight %}
+
+If you would have observed, even if we insert a value of length 32 into column `FILENAME` only 30 characters added to table and rest of the string `2a` got skipped.
+And then I try to find out length of the filename column by giving 500 A's as input to it, but script printed 110 A's only. Which means our filename column length is 110.
+Quickly, I got an idea that, inserting 111 length string into that column skips 111th character, so I came up with this payload
+
+
+./././././././././././././././././././././././././././././././././././././././././././././././././././flag.php~
+
+`~` character at the end bypasses the regular expression <br> `preg_match('/\.\.|(\.php$)/is',$filename)` and skipped by the insert query because it's 111th character.
+That gives us the contents of flag.php in source page and that is,
+
+{% highlight php %}
+<?php
+$leet = "53714c5f63306c756d6e5f7472756e63407469306e";
+function hex2str( $hex ){
+    return pack('H*', $hex);
+}
+echo "flag{".md5(hex2str($leet))."}";
+?>
+{% endhighlight %}
+
+
+After executing that php code I got the flag.
+
+Flag is: **flag{f89759dab5b6ef402428c4571040c067}**
+
+Thanks for reading and thanks to team bi0s for making a great CTF and introducing me to different attack vectors.
+
+_Don't forget to give feedback on my writeup's as a reply, so that I can improve._
