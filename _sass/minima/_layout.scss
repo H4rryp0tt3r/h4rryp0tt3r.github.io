@@ -199,9 +199,13 @@
 }
 
 .post-title {
-  font-size: 36px;
-  letter-spacing: -1px;
-  line-height: 1;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.04em;
+  color: rgba(0,0,0,.8);
+  font-size: 35px;
 
   @include media-query($on-laptop) {
     font-size: 36px;

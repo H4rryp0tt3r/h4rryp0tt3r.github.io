@@ -208,3 +208,10 @@ pre {
   font-weight:400;
   src:local("Lora"),local("Lora-Regular"),url(/assets/fonts/lora-v9-latin-regular.woff2) format("woff2"),url(/assets/fonts/lora-v9-latin-regular.woff) format("woff")
 }
+
+@font-face {
+  font-family:Open Sans;
+  font-style:normal;
+  font-weight:700;
+  src:local("Open Sans Bold"),local("OpenSans-Bold"),url(/assets/fonts/open-sans-v13-latin-700.woff2) format("woff2"),url(/assets/fonts/open-sans-v13-latin-700.woff) format("woff")
+}
