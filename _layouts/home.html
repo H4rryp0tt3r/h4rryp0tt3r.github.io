@@ -10,8 +10,16 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
+
+    {% assign reading_time = post.content | strip_html | number_of_words | plus:91 | divided_by:180 %}
+    {% if reading_time <= 1 %}
+    {% assign reading_time = '1' | append:' min read' %}
+    {% else %}
+    {% assign reading_time = reading_time | append:' min read' %}
+    {% endif %}
+
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} · {{ reading_time }}</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
