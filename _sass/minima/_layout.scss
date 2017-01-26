@@ -247,3 +247,50 @@
     }
   }
 }
+
+.siteFooter {
+  padding: 40px 0 30px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+.siteFooter-social {
+  padding-left: 0;
+  margin-left: -5px;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  a {
+    color: rgba(0,0,0,.7);
+
+    &:hover,
+    &:focus {
+      color: rgba(0,0,0,.8);
+    }
+  }
+}
+
+.siteFooter-legal {
+  margin-top: 30px;
+  font-family: $base-font-family;
+  font-size: 14px;
+  color: rgba(0,0,0,.6);
+  text-rendering: auto;
+
+  a {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.copyLeft {
+    display: inline-block;
+    transform: rotate(180deg);
+}

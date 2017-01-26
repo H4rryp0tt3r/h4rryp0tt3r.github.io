@@ -1,10 +1,16 @@
 title: Your awesome title
-email: your-email@domain.com
+author:
+  name: Nagesh Podilapu
+  email: nagesh.podilapu@thoughtworks.com
+  bio: "I love getting lost in security, application development, and listening music a lot."
+  facebook: H4rryp0tt3r7
+  twitter: H4rryp0tt3r7
+  linkedin: h4rryp0tt3r
+  github: H4rryp0tt3r
+  country: India
 description: > # Sample discription for the blog
 baseurl: ""
 url: "http://nagesh.blog"
-twitter_username: H4rryp0tt3r7
-github_username:  H4rryp0tt3r
 
 disqus:
   shortname: nagesh-blog

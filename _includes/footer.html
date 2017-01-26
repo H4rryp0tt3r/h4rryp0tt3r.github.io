@@ -1,46 +1,81 @@
-<footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
+<footer class="siteFooter" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <ul class="siteFooter-social">
           <li>
-            {% if site.author %}
-              {{ site.author | escape }}
-            {% else %}
-              {{ site.title | escape }}
-            {% endif %}
-            </li>
-            {% if site.email %}
-            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
+            <a href="/feed.xml">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-feed fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% if site.author.github %}
           <li>
-            {% include icon-github.html username=site.github_username %}
+            <a rel="me" href="//github.com/{{ site.author.github }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
           </li>
           {% endif %}
-
-          {% if site.twitter_username %}
+          {% if site.author.linkedin %}
           <li>
-            {% include icon-twitter.html username=site.twitter_username %}
+            <a rel="me" href="//linkedin.com/in/{{ site.author.linkedin }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.author.facebook %}
+          <li>
+            <a rel="me" href="//facebook.com/{{ site.author.facebook }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.author.twitter %}
+          <li>
+            <a rel="me" href="//twitter.com/{{ site.author.twitter }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          {% endif %}
+          {% if site.author.email %}
+          <li>
+            <a rel="me" href="mailto:{{ site.author.email }}">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
           </li>
           {% endif %}
         </ul>
-      </div>
 
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description | escape }}</p>
+        {% if site.author %}
+        {% assign site_author = site.author.name | default: site.author %}
+        {% endif %}
+        {% if site_author %}
+        {% assign site_author = site_author | smartify | strip_html | strip_newlines | escape_once %}
+        {% endif %}
+
+        {% assign site_title = site.title | default: site.name %}
+        {% if site_title %}
+        {% assign site_title = site_title | smartify | strip_html | strip_newlines | escape_once %}
+        {% endif %}
+        <p class="siteFooter-legal"><span class="copyLeft">&copy; </span> {{ site.time | date: '%Y' }} {% if site.author %} {{ site_author }} {% else %}{{ site_title }}{% endif %}</p>
       </div>
     </div>
-
   </div>
-
 </footer>
