@@ -199,11 +199,11 @@
 }
 
 .post-title {
-  font-family: Open Sans;
+  font-family: blog-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.04em;
+  line-height: 1.04;
+  letter-spacing: -.028em;
   color: rgba(0,0,0,.8);
   font-size: 35px;
 
@@ -215,12 +215,12 @@
 .post-content {
   margin-bottom: $spacing-unit;
 
-  font-family: Lora;
-  font-size: 19px;
+  font-family: blog-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 21px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.58;
-  letter-spacing: -.002em;
+  letter-spacing: -.003em;
   color: rgba(0,0,0,.8);
 
   h2 {
