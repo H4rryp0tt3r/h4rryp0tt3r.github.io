@@ -4,3 +4,11 @@ _site
 .idea/
 .sass-cache
 .DS_*
+npm-debug.log*
+build/Release
+node_modules
+jspm_packages
+.npm
+.nvmrc
+*.tgz
+.yarn-integrity
