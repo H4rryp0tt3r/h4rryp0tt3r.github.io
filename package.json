@@ -1,0 +1,9 @@
+{
+  "name": "h4rryp0tt3r.github.io",
+  "version": "1.0.0",
+  "description": "Asset manangement for my personal blog (http://nagesh.blog)",
+  "main": "Gulpfile.js",
+  "repository": "https://github.com/H4rryp0tt3r/h4rryp0tt3r.github.io.git",
+  "author": "H4rryp0tt3r <nagesh.podilapu@gmail.com>",
+  "license": "GPL-3.0"
+}
