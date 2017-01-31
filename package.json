@@ -5,5 +5,18 @@
   "main": "Gulpfile.js",
   "repository": "https://github.com/H4rryp0tt3r/h4rryp0tt3r.github.io.git",
   "author": "H4rryp0tt3r <nagesh.podilapu@gmail.com>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-flatten": "^0.3.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "gulp-watch": "^4.3.11"
+  }
 }
