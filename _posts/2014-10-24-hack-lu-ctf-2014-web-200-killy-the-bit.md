@@ -2,6 +2,7 @@
 layout: post
 title: "Hack.lu CTF 2014: Web 200 - Killy The Bit"
 date: 2014-10-24 11:04:06.000000000 +05:30
+excerpt: "A writeup for challenge in Hack.lu CTF 2014 where we used UNION Based SQL Injection technique"
 type: post
 published: true
 status: publish

@@ -2,6 +2,7 @@
 layout: post
 title: How we hacked our university notice board?
 date: 2014-07-10 06:44:56.000000000 +05:30
+excerpt: "A post explaining how we hacked our notice board of our university by exploiting a SQL Injection vulnerability"
 type: post
 published: true
 status: publish

@@ -2,6 +2,7 @@
 layout: post
 title: Volga CTF 2014 - Stegano 200 Writeup
 date: 2014-03-31 00:30:01.000000000 +05:30
+excerpt: "A writeup on steganography challenge in Volga CTF 2014 where I used Least Significant Bit technique."
 type: post
 published: true
 status: publish

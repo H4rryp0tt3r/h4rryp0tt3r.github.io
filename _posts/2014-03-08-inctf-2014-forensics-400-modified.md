@@ -2,6 +2,7 @@
 layout: post
 title: InCTF 2014 - Forensics 400 - MODIfied
 date: 2014-03-08 19:17:11.000000000 +05:30
+excerpt: "A steganography challenge on Least Significant Bit technique that I solved in InCTF 2014"
 type: post
 published: true
 status: publish

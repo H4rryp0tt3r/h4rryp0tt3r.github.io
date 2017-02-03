@@ -2,6 +2,7 @@
 layout: post
 title: Backdoor CTF 2014 - Misc 250-2 Writeup
 date: 2014-03-24 09:36:39.000000000 +05:30
+excerpt: "A writeup for a steganography challenge that we solved in Backdoor CTF 2014"
 type: post
 published: true
 status: publish
