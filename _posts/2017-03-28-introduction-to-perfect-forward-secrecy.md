@@ -1,8 +1,11 @@
 ---
 layout: post
 title: Introduction to Perfect Forward Secrecy
+date: 2017-03-28 21:15:59 +05:30
 excerpt: "A brief introduction to Perfect forward secrecy. How will this impact our secure communications, why should be care about it."
 type: post
+published: true
+status: publish
 author: Nagesh Podilapu a.k.a H4rryp0tt3r
 assetID: 834e13c69c3f9a4b6cea0ff6626a02dd
 ---
