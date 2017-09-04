@@ -10,7 +10,7 @@ author: Nagesh Podilapu a.k.a H4rryp0tt3r
 assetID: 792fe2131db0a2d0bc7b58330df0676b
 ---
 
-In this challenge they provided a simple web page hosted at [http://fup.chal.ctf.westerns.tokyo/][chal-link]{:target="_blank"} (may not be available at this time).
+In this challenge they provided a simple web page hosted at [http://fup.chal.ctf.westerns.tokyo/][chal-link]{:target="_blank"} (might not be available at this time).
 
 {% include image.html url="/assets/792fe2131db0a2d0bc7b58330df0676b/home_page.png" description="Front page of the given challenge" %}
 
