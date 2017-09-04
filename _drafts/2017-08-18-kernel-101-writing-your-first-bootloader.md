@@ -9,11 +9,11 @@ I just wanted to write a kernel for learning some really low level operating sys
 
 **Let's get started! So, where does it all start?**
 
-When a computer starts up, the job of getting from nothing to a functional operating system involves a lot of steps. When you power on your computer with a CPU, it will expect the first instruction to execute to be at physical address `0xFFFFFFF0`. This physical address is also called **reset vector**<sup>[[1]][reset-vector]{:target="_blank"}</sup>. So the x86 CPU vendors will hardcode Instruction Pointer(EIP) to `0xFFFFFFF0`.
+When a computer starts up, the job of getting from nothing to a functional operating system involves a lot of steps. When you power on your computer with a CPU, it will expect the first instruction to execute to be at physical address `0xFFFFFFF0`. This physical address is also called [**reset vector**][reset-vector]{:target="_blank"}. So the x86 CPU vendors will hardcode Instruction Pointer(EIP) to `0xFFFFFFF0`.
 
-All you need to do is to place your BIOS program's first instruction at reset vector, so that CPU can load BIOS. Almost all the CPU's comes with a stored BIOS at the reset vector, but we sure can write our own BIOS (a bit of PITA) and write it to memory at reset vector. If something goes wrong while writing your BIOS to memory, you will end up having a bricked CPU!
+All you need to do is to place your BIOS program's first instruction at reset vector, so that CPU can load BIOS. Almost all the CPU's comes with a BIOS program stored in a ROM inside motherboard at the reset vector address, but we sure can write our own BIOS (a bit of PITA) and write it to memory at reset vector. If something goes wrong while writing your BIOS to memory, you will end up having a bricked CPU!
 
-I don't want to go that deep (maybe next time I'll try writing a BIOS), this time I thought of taking an existing basic BIOS and writing our own bootloader and giving it to BIOS.
+First BIOS will copy itself from the ROM it is residing to RAM for faster access and this process is called [shadowing][bios-shadowing]{:target="_blank"}. I don't want to go that deep (maybe next time I'll try writing a BIOS), this time I thought of taking an existing basic BIOS and writing our own bootloader and giving it to BIOS.
 
 **So, What is a bootloader?**
 
@@ -59,3 +59,4 @@ apt-get install qemu
 [protected-mode]: https://en.wikipedia.org/wiki/Protected_mode
 [bios-interrupts]: https://en.wikipedia.org/wiki/BIOS_interrupt_call
 [nasm]: https://en.wikipedia.org/wiki/Netwide_Assembler
+[bios-shadowing]: http://www.rigacci.org/docs/biblio/online/firmware/shadow.htm
