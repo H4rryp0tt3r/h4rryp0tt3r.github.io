@@ -10,7 +10,7 @@ author: Nagesh Podilapu a.k.a H4rryp0tt3r
 assetID: 95636442e273569823125d6ace216d4b
 ---
 
-First of all thanks to ASIS team for organizing a great CTF! I enjoyed solving this challenge, and in the process of pwning I get to learn a lot of stuff. I'm going to explain everything in as much detail as possible.
+First of all thanks to ASIS team for organizing a great CTF! I enjoyed solving this challenge, and in the process of pwning I got to learn a lot of stuff. I'm going to explain everything in as much detail as possible.
 
 They gave a web page running at [https://golem.asisctf.com/][challenge-link]{:target="_blank"}, 
 
