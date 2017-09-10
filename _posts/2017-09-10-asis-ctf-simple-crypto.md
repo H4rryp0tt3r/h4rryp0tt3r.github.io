@@ -16,7 +16,7 @@ In this challenge they provided encrypted flag contents in a file named [flag.en
 
 This is a simple XOR cipher, and as we know x ⊕ y == y ⊕ x. So after understanding the above code, all we need to do is just XOR contents of flag.enc with key contents (repeat the key to match length of flag.enc contents). So I quickly wrote a python snippet to decrypt.
 
-// DECRYPT_SNIPPET_HERE
+<script src="https://gist.github.com/H4rryp0tt3r/bb1a63c132b8d13ef0b8eab125af8bac.js"></script>
 
 And decrypted data is a PNG image (linux file command will help), here it is
 
