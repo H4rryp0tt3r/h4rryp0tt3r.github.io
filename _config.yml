@@ -12,8 +12,6 @@ description: > # Sample discription for the blog
 baseurl: ""
 url: "http://nagesh.blog"
 
-disqus:
-  shortname: nagesh-blog
 google_analytics: UA-89753001-1
 
 markdown: kramdown

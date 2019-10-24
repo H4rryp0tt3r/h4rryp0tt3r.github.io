@@ -26,7 +26,11 @@ layout: default
     {{ content }}
   </div>
 
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
+  <script src="https://utteranc.es/client.js"
+          repo="H4rryp0tt3r/h4rryp0tt3r.github.io"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
 </article>
