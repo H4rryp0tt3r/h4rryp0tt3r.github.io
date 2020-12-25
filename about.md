@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hello there!
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+I am Nagesh, and I'm working as a software developer [@ImmoScout24][scout24-url]{:target="_blank"} in Berlin, Germany.
+I'm more of a generalist developer, and I worked on Web, mobile and desktop applications and have a lot of interest for computer security.
+In fact most of the posts you find here on this blog are around security, that's how much I love computer security.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+I worked on a variety of technologies like Kotlin, Java, JavaScript/TypeScript, Swift, Rust just to name a few.
+You can find me in the links attached to icons in the footer section.
+
+[scout24-url]: https://www.immobilienscout24.de/unternehmen/
