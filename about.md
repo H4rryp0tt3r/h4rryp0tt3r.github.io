@@ -13,4 +13,4 @@ In fact most of the posts you find here on this blog are around security, that's
 I worked on a variety of technologies like Kotlin, Java, JavaScript/TypeScript, Swift, Rust just to name a few.
 You can find me in the links attached to icons in the footer section.
 
-[scout24-url]: https://www.yelp.com
+[yelp-url]: https://www.yelp.com
