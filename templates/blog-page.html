@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+{{ page.title | safe }}
+{% endblock %}
+
 {% block content %}
 <section name="blog-details">
   <div class="flex flex-col items-center justify-center">
@@ -24,7 +28,7 @@
   <script src="https://utteranc.es/client.js"
           repo="H4rryp0tt3r/h4rryp0tt3r.github.io"
           id="utterances-box"
-          issue-term="title"
+          issue-term="pathname"
           theme="github-light"
           crossorigin="anonymous"
           async>
