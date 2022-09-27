@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section name="blog-details">
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-blue-700 dark:text-blue-400 leading-8 text-center mt-8">
+      {{ page.title }}
+    </h1>
+    <ul class="my-4">
+      {% for tag in page.taxonomies.tags %}
+      <li
+        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 dark:bg-slate-500 text-pink-800 dark:text-gray-100">
+        {{ tag }}</li>
+      {% endfor %}
+    </ul>
+    <div class="flex space-x-1 text-sm text-gray-500 dark:text-gray-400 font-semibold">
+      <time datetime="2020-03-16">{{ page.date }}</time><span aria-hidden="true"> · </span><span>30 min read</span>
+    </div>
+  </div>
+  <div class="prose dark:prose-invert prose-indigo prose-lg my-6 mx-auto">
+    {{ page.content | safe }}
+    <hr/>
+  </div>
+  <script src="https://utteranc.es/client.js"
+          repo="H4rryp0tt3r/h4rryp0tt3r.github.io"
+          id="utterances-box"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+{% endblock content %}

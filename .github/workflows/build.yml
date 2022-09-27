@@ -1,0 +1,53 @@
+# Zola build workflow.
+
+name: Build and deploy website
+
+env:
+  ZOLA_VERSION: "0.14.1"
+  SOURCE_BRANCH: "main"
+  TARGET_BRANCH: "main"
+  CNAME: "nagesh.blog"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Setup node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: lts/gallium
+    - name: Run npm install
+      run: npm ci
+    - name: Run npm build
+      run: npm build
+    - name: Install zola
+      run: |
+        set -x
+        wget -O - \
+           "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+        | sudo tar xzf - -C /usr/local/bin
+    - name: Generate HTML
+      run: zola build
+    - name: add CNAME
+      run: |
+        if [ -n ${{ env.CNAME }} ] ; then
+            echo -n ${{ env.CNAME }} > public/CNAME
+            echo "Used CNAME from the action workflow file"
+        else
+            ehco "CNAME is not specified in environment variables!"
+            exit 1
+        fi
+    - name: Deploy to gh-pages
+      if: ${{ github.event_name == 'push' && github.ref == format('refs/heads/{0}', env.SOURCE_BRANCH) }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        force_orphan: true

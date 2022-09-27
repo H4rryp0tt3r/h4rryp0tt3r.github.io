@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production npx tailwindcss -i styles/index.css -o static/styles/index.css",
+    "watch": "(trap 'kill 0' SIGINT; zola serve --drafts & npx tailwindcss -i styles/index.css -o static/styles/index.css --watch)"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.7",
+    "tailwindcss": "^3.1.8"
+  }
+}
