@@ -3,9 +3,9 @@ A place where I write what I think of and what I know of (a blog kinda thingy, m
 
 This blog is curretly pointed to a custom domain [http://nagesh.blog](http://nagesh.blog)
 
-This is a github hosted jekyll blog. You need [jekyll](https://jekyllrb.com/docs/installation/) installed on your machine to run it locally
+This uses [Zola](https://www.getzola.org/documentation/getting-started/overview/), which is a static site generator. You need zola installed on your system to run this locally.
 
     ➜ git clone https://github.com/H4rryp0tt3r/h4rryp0tt3r.github.io/
-    ➜ gem install bundler
-    ➜ bundle install
-    ➜ jekyll serve
+    ➜ brew install zola
+    ➜ npm install
+    ➜ npm run watch
