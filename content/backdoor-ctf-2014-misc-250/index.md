@@ -6,7 +6,7 @@ author="Nagesh Podilapu"
 [taxonomies]
 tags=["ctf", "web", "steganography"]
 +++
-<!-- assetID: 9b95a7734712c5ef1820f4da19568850 -->
+
 In this challenge they gave a link to a web page and an image named **backdoor.bmp** as login credentials.
 
 ![Login page of the given challenge](misc250-2.png)

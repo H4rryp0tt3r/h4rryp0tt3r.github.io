@@ -8,9 +8,9 @@ date="2022-09-27"
 tags=["bootloader", "kernel", "assembly"]
 +++
 
-I just wanted to write a kernel for learning some really low level operating system concepts. And in the way I figured out a lot of things, and writing a bootloader is one of those. I choose to use x86 CPU architecture, so when I say CPU it means an x86 CPU.
+I just wanted to write a kernel for learning some really low level operating system concepts. And in that journey I figured out a lot of things, and writing a bootloader is one of those. I choose to use x86 CPU architecture, so when I say CPU it means an x86 CPU.
 
-## So, where does it all start?
+# Where does it all start?
 
 When a computer starts up, the job of getting from nothing to a functional operating system involves a lot of steps. When you power on your computer with a CPU, it will expect the first instruction to execute to be at physical address **0xFFFFFFF0**. This physical address is also called [reset vector](https://en.wikipedia.org/wiki/Reset_vector). So the x86 CPU vendors will hardcode Instruction Pointer(EIP) to **0xFFFFFFF0**.
 
@@ -18,11 +18,11 @@ All you need to do is to place your BIOS program's first instruction at reset ve
 
 First BIOS will copy itself from the ROM it is residing to RAM for faster access and this process is called [shadowing](http://www.rigacci.org/docs/biblio/online/firmware/shadow.htm). I don't want to go that deep (maybe next time I'll try writing a BIOS), this time I thought of taking an existing basic BIOS and writing our own bootloader and giving it to BIOS.
 
-## So, What is a bootloader?
+# What is a bootloader?
 
 Bootloader is a piece of code which start the operating system by loading it to the disk memory of a computer from a bootable medium and passing control to the kernel (core of Operating system).
 
-## How does BIOS executes our bootloader?
+# How does BIOS executes our bootloader?
 
 Few basics before the answer, A sector is a part of a memory device. One sector is **512 bytes** in most of the hard disks that we use (newer HDDs use 4096 bytes as a sector as well), and If you want to use a disk as a bootable medium then the first sector should contain bootloader.
 
@@ -37,7 +37,7 @@ Typically the job of a bootloader is to load operating system residing somewhere
 A thing to note here is that we will be operating in [real mode](https://en.wikipedia.org/wiki/Real_mode) of the CPU during the boot process instead of [protected mode](https://en.wikipedia.org/wiki/Protected_mode) (which is used when kernel comes into action). In real mode, you have access to some [BIOS interrupt calls](https://en.wikipedia.org/wiki/BIOS_interrupt_call) and to only 16-bits of 32-bit CPU registers.
 
 
-## Getting started!
+# Getting started!
 
 As we don't have an option but to write our bootloader in the CPU specific assembly language (as we don't have our operating system ready yet), we need a compiler for this. I chose to use [NASM](https://en.wikipedia.org/wiki/Netwide_Assembler) for compiling. And I'm using a ubuntu OS to write my kernel.
 
