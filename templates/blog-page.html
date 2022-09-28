@@ -18,7 +18,7 @@
       {% endfor %}
     </ul>
     <div class="flex space-x-1 text-sm text-gray-500 dark:text-gray-400 font-semibold">
-      <time datetime="2020-03-16">{{ page.date }}</time><span aria-hidden="true"> · </span><span>{{ page.reading_time }} min read</span>
+      <time>{{ page.date | date(format="%d %B %Y") }}</time><span aria-hidden="true"> · </span><span>{{ page.reading_time }} min read</span>
     </div>
   </div>
   <div class="prose dark:prose-invert max-w-none prose-indigo prose-lg my-6 mx-auto prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
