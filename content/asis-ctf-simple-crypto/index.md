@@ -7,7 +7,7 @@ author="Nagesh Podilapu"
 tags=["ctf", "xor", "crypto"]
 +++
 
-In this challenge they provided encrypted flag contents in a file named [flag.enc][flag.enc] and the encryption implementation below
+In this challenge they provided encrypted flag contents in a file named [flag.enc](flag.enc) and the encryption implementation below
 
 ```python
 #!/usr/bin/python
