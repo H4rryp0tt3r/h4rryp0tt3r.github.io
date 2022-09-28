@@ -9,7 +9,7 @@ tags=["ctf", "ssti", "web"]
 
 First of all thanks to ASIS team for organizing a great CTF! I enjoyed solving this challenge, and in the process of pwning I got to learn a lot of stuff. I'm going to explain everything in as much detail as possible.
 
-They gave a web page running at [https://golem.asisctf.com/](https://golem.asisctf.com/)
+They gave a web page running at https://golem.asisctf.com/ (Only lived until the competition lasted!)
 
 ![Home page of the given challenge!](golem_front.png)
 

@@ -7,7 +7,7 @@ author="Nagesh Podilapu"
 tags=["ctf", "web", "php"]
 +++
 
-In this challenge they provided a simple web page hosted at [http://fup.chal.ctf.westerns.tokyo/](http://fup.chal.ctf.westerns.tokyo/) (might not be available at this time).
+In this challenge they provided a simple web page hosted at http://fup.chal.ctf.westerns.tokyo/ (Only available during competition).
 
 ![Front page of the given challenge](home_page.png)
 
