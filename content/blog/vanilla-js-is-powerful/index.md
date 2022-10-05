@@ -40,7 +40,7 @@ If you query select a div in JS which has 10 children and re-arrange these child
 ```javascript
 const diffContainer = filesContainer.querySelector(".js-diff-container")
 // Shuffle these divs
-const diffDivs = Array.from(container.children).sort(_ => Math.random() - 0.5)
+const diffDivs = Array.from(diffContainer.children).sort(_ => Math.random() - 0.5)
 // And add them back to the parent div
 diffContainer.append(...diffDivs)
 // You have the diffs re-arranged!
