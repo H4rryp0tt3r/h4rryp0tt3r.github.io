@@ -3,7 +3,7 @@
 name: Build and deploy website
 
 env:
-  ZOLA_VERSION: "0.14.1"
+  ZOLA_VERSION: "0.16.1"
   SOURCE_BRANCH: "main"
   TARGET_BRANCH: "main"
   CNAME: "nagesh.blog"
