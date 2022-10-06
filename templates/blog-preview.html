@@ -1,16 +1,20 @@
 {% macro blog_preview(post) %}
-  <div class="post-preview">
-    <h3 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
-    <small>
-      {{ post.date| date(format="%B %d, %Y") }} - {{ post.word_count }} words - {{ post.reading_time }} mins
-    </small>
-    <div class="summary">
-      {% if post.summary -%}
-        {{ post.summary }}
-      {% else %}
-        {{ post.content | safe | striptags | truncate(length=300) }}
-      {%- endif %}
-      <a href="{{ post.permalink }}">read more</a>
+<li class="py-4 first:pt-0">
+  <a href="{{ post.permalink | safe }}">
+    <p class="text-2xl font-extrabold text-blue-700 dark:text-blue-400">{{ post.title }}</p>
+    <ul class="my-3">
+      {% for tag in post.taxonomies.tags %}
+      <li
+        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 dark:bg-slate-500 text-pink-800 dark:text-gray-100">
+        {{ tag }}</li>
+      {% endfor %}
+    </ul>
+    <div class="flex space-x-1 text-sm text-gray-500 dark:text-gray-400 font-semibold">
+      <time>{{ post.date | date(format="%d %B %Y") }}</time><span aria-hidden="true"> · </span><span>{{ post.reading_time }} min read</span>
     </div>
-  </div>
+    <p class="mt-3 text-gray-600 dark:text-gray-300 mb-1">
+      {{ post.description }}
+    </p>
+  </a>
+</li>
 {% endmacro input %}
