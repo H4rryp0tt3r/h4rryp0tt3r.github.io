@@ -17,8 +17,8 @@
 </head>
 
 <body
-  class="bg-white dark:bg-gray-900 antialiased box-border border-t-4 border-cyan-600 dark:border-cyan-500 h-screen flex flex-col justify-between">
-  <header class="border-0 border-b border-solid border-gray-300 dark:border-gray-700">
+  class="bg-white dark:bg-gray-900 antialiased box-border h-screen flex flex-col">
+  <header class="border-0 border-b border-solid border-gray-300 dark:border-gray-700 border-t-4 border-t-cyan-600 dark:border-t-cyan-500">
     <nav class="px-4 my-3 md:px-0 md:mx-auto md:w-3/4 md:max-w-3xl xl:max-w-4xl flex items-center gap-4">
       <h1 class="text-3xl font-extrabold text-cyan-600 dark:text-cyan-500 mr-auto"><a href="/">{{ config.extra.site_name | safe
           }}</a></h1>
@@ -38,11 +38,11 @@
       </button>
     </nav>
   </header>
-  <main class="mx-auto w-full px-4 md:px-0 md:w-3/4 md:max-w-3xl xl:max-w-4xl flex flex-col grow">
+  <main class="self-center w-full px-4 md:px-0 md:w-3/4 md:max-w-3xl xl:max-w-4xl flex flex-col grow">
     {% block content %} {% endblock %}
   </main>
   <footer
-    class="w-100 bg-slate-100 dark:bg-gray-700 border-t border-solid border-gray-200 dark:border-gray-600 py-4 mt-4 flex flex-col items-center justify-center">
+    class="w-100 bg-slate-100 dark:bg-gray-700 border-t border-solid border-gray-200 dark:border-gray-600 py-4 flex flex-col items-center justify-center">
     <ul class="flex my-4 text-white dark:text-gray-100">
       <li class="rounded-full bg-cyan-600 dark:bg-cyan-500 p-3 m-2">
         <a rel="me" href="https://github.com/H4rryp0tt3r">
