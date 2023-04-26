@@ -3,6 +3,7 @@ title="Volga CTF 2014 - Stegano 200 Writeup"
 date="2014-03-31"
 description="A writeup on steganography challenge in Volga CTF 2014 where I used Least Significant Bit technique."
 author="Nagesh Podilapu"
+aliases=["2014/03/30/volga-ctf-2014-stegano-200-writeup.html"]
 [taxonomies]
 tags=["ctf", "steganography", "python"]
 +++

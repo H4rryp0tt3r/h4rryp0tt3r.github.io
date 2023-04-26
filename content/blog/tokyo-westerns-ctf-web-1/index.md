@@ -3,6 +3,7 @@ title="Tokyo Westerns CTF 2017 - Web 1 - Freshen Uploader"
 date="2017-09-04"
 description="A web challenge, where we have a exploit a LFI and then a vulnerable type check in PHP against return value of a string function named 'stripos'"
 author="Nagesh Podilapu"
+aliases=["2017/09/04/tokyo-westerns-ctf-web-1.html"]
 [taxonomies]
 tags=["ctf", "web", "php"]
 +++

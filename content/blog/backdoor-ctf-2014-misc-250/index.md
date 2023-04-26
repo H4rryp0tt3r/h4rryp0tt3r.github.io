@@ -3,6 +3,7 @@ title="Backdoor CTF 2014 - Misc 250-2 Writeup"
 date="2014-03-24"
 description="A writeup for a steganography challenge that we solved in Backdoor CTF 2014"
 author="Nagesh Podilapu"
+aliases=["2014/03/24/backdoor-ctf-2014-misc-250-2-writeup.html"]
 [taxonomies]
 tags=["ctf", "web", "steganography"]
 +++
