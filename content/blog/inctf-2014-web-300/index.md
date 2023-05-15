@@ -3,6 +3,7 @@ title="InCTF 2014 - Web 300 writeup"
 date="2014-03-08"
 description="A web security writeup on SQL Truncation vulnerability that we used to solve a challenge in InCTF 2014"
 author="Nagesh Podilapu"
+aliases=["2014/03/08/inctf-2014-web-300.html"]
 [taxonomies]
 tags=["ctf", "web", "SQLi"]
 +++

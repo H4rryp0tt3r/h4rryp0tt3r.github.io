@@ -3,6 +3,7 @@ title="Introduction to Perfect Forward Secrecy"
 date="2017-03-28"
 description="A brief introduction to Perfect forward secrecy. How will this impact our secure communications, why should be care about it."
 author="Nagesh Podilapu"
+aliases=["2017/03/28/introduction-to-perfect-forward-secrecy.html"]
 [taxonomies]
 tags = ["security", "heartbleed", "ssl"]
 +++
