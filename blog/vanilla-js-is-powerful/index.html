@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A blog where I rarely write my learnings and findings.">
+  <link rel="stylesheet" href="https://nagesh.blog/styles/index.css" />
+  <title>
+Vanilla JS is powerful!
+</title>
+  <script type="text/javascript">
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+
+<body
+  class="flex flex-col h-screen antialiased bg-white dark:bg-gray-900 box-border">
+  <header class="border-0 border-t-4 border-b border-gray-300 border-solid dark:border-gray-700 border-t-cyan-600 dark:border-t-cyan-500">
+    <nav class="flex items-center px-4 my-3 md:px-0 md:mx-auto md:w-3/4 md:max-w-3xl xl:max-w-4xl gap-4">
+      <h1 class="mr-auto text-3xl font-extrabold text-cyan-600 dark:text-cyan-500"><a href="/">My Blog</a></h1>
+      <a class="font-medium text-gray-900 dark:text-gray-100" href="/about">About</a>
+      <button id="theme-toggle" type="button"
+        class="p-2 bg-gray-100 rounded-lg text-cyan-600 dark:text-cyan-500 dark:bg-gray-700" role="button" aria-label="Toggle dark/light theme button">
+        <svg id="theme-toggle-dark-icon" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </nav>
+  </header>
+  <main class="flex flex-col self-center w-full px-4 md:px-0 md:w-3/4 md:max-w-3xl xl:max-w-4xl grow">
+    
+<section name="blog-details">
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="mt-8 text-3xl font-extrabold text-center text-blue-700 md:text-4xl dark:text-blue-400 leading-8">
+      Vanilla JS is powerful!
+    </h1>
+    <ul class="my-4">
+      
+      <li
+        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 dark:bg-slate-500 text-pink-800 dark:text-gray-100">
+        javascript</li>
+      
+      <li
+        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 dark:bg-slate-500 text-pink-800 dark:text-gray-100">
+        dom</li>
+      
+    </ul>
+    <div class="flex text-sm font-semibold text-gray-500 space-x-1 dark:text-gray-400">
+      <time>17 September 2022</time><span aria-hidden="true"> · </span><span>4 min read</span>
+    </div>
+  </div>
+  <div class="mx-auto my-6 prose dark:prose-invert max-w-none prose-indigo prose-lg prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+    <p>Hey y'all 👋🏾 we had an internal 3-day hackathon at Yelp, and this is an excerpt of my experiences building a new feature to an existing chrome extension used internally. This extension adds new features to our internal Github enterprise instance.</p>
+<p>This feature idea is ~2 years old, and what can be a better time to work on it than a hackathon?</p>
+<p>Most of the learnings are <strong>pretty basic stuff</strong>, and nothing fancy! However, this is more for beginners and also for my future self.</p>
+<h1 id="so-what-problem-this-new-feature-solves">So, what problem this new feature solves?</h1>
+<p>A lot of people find it difficult to read diff of a Github PR when there are a lot of file changes. And part of the problem is that the file changes are not displayed in a readable order.</p>
+<p>Imagine you made a PR with an important config change along with some source changes and test changes, you would want your reviwer to read the config file change first and then the code changes, right?</p>
+<p>However, github doesn't display the diff in this order, does it? That's the problem right there!</p>
+<h1 id="how-did-we-solve-it">How did we solve it?</h1>
+<p>So the big idea is to show a small UI on <strong>Files Changed</strong> section of a github PR, where users can re-arrange changed file paths in the order it's easier to read the PR, and when they are done, they press a button and that will save these arranged file paths into their clipboard and asks them to post it in the PR description/body.</p>
+<p>From this point on, if anyone opens this PR, the extension will read the saved file list from PR description and shows the file diffs in user configured order.</p>
+<p>We came up with some better ideas than this, but this is simpler and faster to implement!</p>
+<h1 id="so-what-did-we-learn">So, what did we learn?</h1>
+<p>This internally used chrome extension can only access DOM and nothing else. So we have to play with the dreaded DOM manipulation! In the process we learned 4 simple things.</p>
+<h2 id="1-rearranging-divs-is-easy">1. Rearranging divs is easy!</h2>
+<p>At first I thought I'll have to re-create elements in the required order, clean up existing elements and then add newly created elements to parent container. I learned that we don't have to do all that!</p>
+<p>If you query select a div in JS which has 10 children and re-arrange these children in JS, and append them all back to this selected div, this will re-arrange the divs!</p>
+<pre data-lang="javascript" style="background-color:#282c34;color:#abb2bf;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#c678dd;">const </span><span style="color:#e06c75;">diffContainer </span><span>= </span><span style="color:#e06c75;">filesContainer</span><span>.</span><span style="color:#56b6c2;">querySelector</span><span>(</span><span style="color:#98c379;">&quot;.js-diff-container&quot;</span><span>)
+</span><span style="font-style:italic;color:#5c6370;">// Shuffle these divs
+</span><span style="color:#c678dd;">const </span><span style="color:#e06c75;">diffDivs </span><span>= </span><span style="color:#e5c07b;">Array</span><span>.</span><span style="color:#61afef;">from</span><span>(</span><span style="color:#e06c75;">diffContainer</span><span>.</span><span style="color:#e06c75;">children</span><span>).</span><span style="color:#56b6c2;">sort</span><span>(</span><span style="color:#e06c75;">_ </span><span style="color:#c678dd;">=&gt; </span><span>Math.</span><span style="color:#56b6c2;">random</span><span>() - </span><span style="color:#d19a66;">0.5</span><span>)
+</span><span style="font-style:italic;color:#5c6370;">// And add them back to the parent div
+</span><span style="color:#e06c75;">diffContainer</span><span>.</span><span style="color:#56b6c2;">append</span><span>(...</span><span style="color:#e06c75;">diffDivs</span><span>)
+</span><span style="font-style:italic;color:#5c6370;">// You have the diffs re-arranged!
+</span></code></pre>
+<h2 id="2-mutationobserver-is-helpful">2. MutationObserver is helpful!</h2>
+<p>When you have to observe changes to a specific DOM node (you want to know when user switches between tabs in a single page application), <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> is your friend!</p>
+<pre data-lang="javascript" style="background-color:#282c34;color:#abb2bf;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#c678dd;">const </span><span style="color:#e06c75;">mutationObserver </span><span>= new MutationObserver((</span><span style="color:#e06c75;">mutations</span><span>) </span><span style="color:#c678dd;">=&gt; </span><span>{
+</span><span>    </span><span style="color:#c678dd;">const </span><span style="color:#e06c75;">areNodesAdded </span><span>= </span><span style="color:#e06c75;">mutations</span><span>.</span><span style="color:#61afef;">some</span><span>(</span><span style="color:#e06c75;">mut </span><span style="color:#c678dd;">=&gt; </span><span style="color:#e06c75;">mut</span><span>.</span><span style="color:#e06c75;">addedNodes</span><span>.length &gt; </span><span style="color:#d19a66;">0</span><span>)
+</span><span>    </span><span style="color:#c678dd;">if </span><span>(</span><span style="color:#e06c75;">areNodesAdded</span><span>) {
+</span><span>        </span><span style="font-style:italic;color:#5c6370;">// Do something for fun and profit!
+</span><span>    }
+</span><span>})
+</span><span>
+</span><span style="color:#e06c75;">mutationObserver</span><span>.</span><span style="color:#56b6c2;">observe</span><span>(document.</span><span style="color:#56b6c2;">querySelector</span><span>(</span><span style="color:#98c379;">&#39;#diff-layout&#39;</span><span>), {
+</span><span>    childList: </span><span style="color:#d19a66;">true</span><span>,
+</span><span>    subtree: </span><span style="color:#d19a66;">true
+</span><span>})
+</span></code></pre>
+<h2 id="3-you-can-deep-clone-an-existing-dom-node">3. You can deep clone an existing DOM node!</h2>
+<p>We had to build this UI where we want to display list of file paths! And lucky for us, github already have this kind of UI element. So, all we need to do is clone it and customize it a bit for our needs.</p>
+<pre data-lang="javascript" style="background-color:#282c34;color:#abb2bf;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#c678dd;">const </span><span style="color:#e06c75;">existingModal </span><span>= document.</span><span style="color:#56b6c2;">querySelector</span><span>(</span><span style="color:#98c379;">&quot;details.toc-select&quot;</span><span>)
+</span><span style="color:#c678dd;">const </span><span style="color:#e06c75;">cloneModal </span><span>= </span><span style="color:#e06c75;">existingFileListingModal</span><span>.</span><span style="color:#56b6c2;">cloneNode</span><span>(</span><span style="color:#d19a66;">true</span><span>)
+</span></code></pre>
+<p><img src="https://nagesh.blog/blog/vanilla-js-is-powerful/original-vs-clone.png" alt="Original modal and clone modal side by side" /></p>
+<h2 id="4-sortablejs-is-amazing">4. SortableJS is amazing!</h2>
+<p>Part of the feature is to allow users to re-arrange file paths in a UI view, and for that we need to allow drag and drop of file paths so user can re-arrange them as they need. For this requirement, we found <a href="https://sortablejs.github.io/Sortable/">SortableJS</a> which is minimal and ticks all the boxes!</p>
+<p>All you need to do is pass a div, and all it's childen can be re-arranged!</p>
+<pre data-lang="javascript" style="background-color:#282c34;color:#abb2bf;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span>new Sortable(document.</span><span style="color:#56b6c2;">querySelector</span><span>(</span><span style="color:#98c379;">&quot;#file-paths-container&quot;</span><span>), {
+</span><span>    animation: </span><span style="color:#d19a66;">150</span><span>,
+</span><span>    ghostClass: </span><span style="color:#98c379;">&#39;blue-background-class&#39;
+</span><span>})
+</span></code></pre>
+<h1 id="conclusion">Conclusion</h1>
+<p>Relying on DOM and parsing it isn't fun, but for a hackathon it's alright! JavaScript and the DOM APIs came a long way from my university days. Vanilla JS is magnitudes powerful and has a lot of support for immutablity and declarative style of code, we can do so much with so little JS code these days!</p>
+
+    <hr/>
+  </div>
+  <script src="https://utteranc.es/client.js"
+          repo="H4rryp0tt3r/h4rryp0tt3r.github.io"
+          id="utterances-box"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+
+  </main>
+  <footer
+    class="flex flex-col items-center justify-center py-4 border-t border-gray-200 border-solid w-100 bg-slate-100 dark:bg-gray-700 dark:border-gray-600">
+    <ul class="flex my-4 text-white dark:text-gray-100">
+      <li class="p-3 m-2 rounded-full bg-cyan-600 dark:bg-cyan-500">
+        <a target="_blank" rel="noreferrer" href="https://github.com/H4rryp0tt3r" role="link" aria-label="Link to my github profile">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+            role="img" class="w-5" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <g fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385c.6.105.825-.255.825-.57c0-.285-.015-1.23-.015-2.235c-3.015.555-3.795-.735-4.035-1.41c-.135-.345-.72-1.41-1.23-1.695c-.42-.225-1.02-.78-.015-.795c.945-.015 1.62.87 1.845 1.23c1.08 1.815 2.805 1.305 3.495.99c.105-.78.42-1.305.765-1.605c-2.67-.3-5.46-1.335-5.46-5.925c0-1.305.465-2.385 1.23-3.225c-.12-.3-.54-1.53.12-3.18c0 0 1.005-.315 3.3 1.23c.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23c.66 1.65.24 2.88.12 3.18c.765.84 1.23 1.905 1.23 3.225c0 4.605-2.805 5.625-5.475 5.925c.435.375.81 1.095.81 2.22c0 1.605-.015 2.895-.015 3.3c0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                fill="currentColor" />
+            </g>
+          </svg>
+        </a>
+      </li>
+      <li class="p-3 m-2 rounded-full bg-cyan-600 dark:bg-cyan-500">
+        <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/h4rryp0tt3r/" role="link" aria-label="Link to my LinkedIn profile">
+          <svg class="w-5 h-5 fill-current" role="img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <path
+                d="M218.123122,218.127392 L180.191928,218.127392 L180.191928,158.724263 C180.191928,144.559023 179.939053,126.323993 160.463756,126.323993 C140.707926,126.323993 137.685284,141.757585 137.685284,157.692986 L137.685284,218.123441 L99.7540894,218.123441 L99.7540894,95.9665207 L136.168036,95.9665207 L136.168036,112.660562 L136.677736,112.660562 C144.102746,99.9650027 157.908637,92.3824528 172.605689,92.9280076 C211.050535,92.9280076 218.138927,118.216023 218.138927,151.114151 L218.123122,218.127392 Z M56.9550587,79.2685282 C44.7981969,79.2707099 34.9413443,69.4171797 34.9391618,57.260052 C34.93698,45.1029244 44.7902948,35.2458562 56.9471566,35.2436736 C69.1040185,35.2414916 78.9608713,45.0950217 78.963054,57.2521493 C78.9641017,63.090208 76.6459976,68.6895714 72.5186979,72.8184433 C68.3913982,76.9473153 62.7929898,79.26748 56.9550587,79.2685282 M75.9206558,218.127392 L37.94995,218.127392 L37.94995,95.9665207 L75.9206558,95.9665207 L75.9206558,218.127392 Z M237.033403,0.0182577091 L18.8895249,0.0182577091 C8.57959469,-0.0980923971 0.124827038,8.16056231 -0.001,18.4706066 L-0.001,237.524091 C0.120519052,247.839103 8.57460631,256.105934 18.8895249,255.9977 L237.033403,255.9977 C247.368728,256.125818 255.855922,247.859464 255.999,237.524091 L255.999,18.4548016 C255.851624,8.12438979 247.363742,-0.133792868 237.033403,0.000790807055">
+              </path>
+            </g>
+          </svg>
+        </a>
+      </li>
+      <li class="p-3 m-2 rounded-full bg-cyan-600 dark:bg-cyan-500">
+        <a target="_blank" rel="noreferrer" href="mailto:nagesh.podilapu@gmail.com" role="link" aria-label="Link to send an email to me">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+            role="img" class="w-5" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <g fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm.14 19.018c-3.868 0-7-3.14-7-7.018c0-3.878 3.132-7.018 7-7.018c1.89 0 3.47.697 4.682 1.829l-1.974 1.978v-.004c-.735-.702-1.667-1.062-2.708-1.062c-2.31 0-4.187 1.956-4.187 4.273c0 2.315 1.877 4.277 4.187 4.277c2.096 0 3.522-1.202 3.816-2.852H12.14v-2.737h6.585c.088.47.135.96.135 1.474c0 4.01-2.677 6.86-6.72 6.86z"
+                fill="currentColor"></path>
+            </g>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <p class="mb-4 text-gray-600 text-semibold dark:text-gray-300">
+      2022 - Nagesh Podilapu
+    </p>
+  </footer>
+  <script type="text/javascript" src="https://nagesh.blog/javascript/dark-mode.js" async></script>
+</body>
+
+</html>
